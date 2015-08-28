@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 public class CookieEater {
 
-    public HttpCookie getCookieUsingCookieHandler() {
+    public static HttpCookie getCookieUsingCookieHandler() {
         try {
             // Instantiate CookieManager;
             // make sure to set CookiePolicy
@@ -37,7 +37,7 @@ public class CookieEater {
         return null;
     }
 
-    public String parseLatLongFromCookie() {
+    public static String parseLatLongFromCookie() {
         final String location = getCookieUsingCookieHandler().toString();
 
         String result = "";
@@ -49,13 +49,14 @@ public class CookieEater {
         return result.substring(0, result.length()-1);
     }
 
-    public String getLat() {
+    public static String getLat() {
         String fullCoords = parseLatLongFromCookie();
         return fullCoords.substring(0, fullCoords.indexOf(","));
     }
 
-    public String getLong() {
+    public static String getLong() {
         String fullCoords = parseLatLongFromCookie();
         return fullCoords.substring(fullCoords.indexOf(",")+1, fullCoords.length());
     }
+
 }
